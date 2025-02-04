@@ -26,7 +26,8 @@ namespace SortingVisualizer
             BeginDrawing();
             ClearBackground(BLACK);
             
-            controls.draw();
+            // Draw the control panel last, so that it is on top of everything.
+            controls.Draw();
 
             EndDrawing();
         }
