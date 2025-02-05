@@ -14,7 +14,10 @@ namespace SortingVisualizer::CoreSystem
     void Array::InitializeBuffer()
     {
         for (int i = 0; i < this->n_visible_elems; ++i)
-            this->buffer[i] = Element(i + 1, WHITE);
+        {
+            this->buffer[i].SetFill(WHITE); 
+            this->buffer[i].SetValue(i + 1);
+        }
     }
     
     void Array::SetNumberOfVisibleElements(int n_visible_elems)

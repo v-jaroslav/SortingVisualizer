@@ -6,12 +6,12 @@ namespace SortingVisualizer::CoreSystem
     Element::Element(int initial_value, Color initial_fill)
         : value(initial_value), fill(initial_fill) { }
 
-    int Element::SetValue(int value)
+    void Element::SetValue(int value)
     {
         this->value = value;
     }
 
-    Color Element::SetFill(Color fill)
+    void Element::SetFill(Color fill)
     {
         this->fill = fill;
     }

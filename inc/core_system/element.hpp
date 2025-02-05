@@ -14,8 +14,8 @@ namespace SortingVisualizer::CoreSystem
     public:
         Element(int initial_value = 0, Color initial_fill = WHITE);
 
-        int SetValue(int value);
-        Color SetFill(Color fill);
+        void SetValue(int value);
+        void SetFill(Color fill);
 
         int GetValue() const;
         Color GetFill() const;

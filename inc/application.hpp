@@ -3,6 +3,7 @@
 
 #include "control_panel.hpp"
 #include "core_system/array.hpp"
+#include "core_system/algorithms/fisher_yates_shuffle.hpp"
 
 namespace SortingVisualizer
 {
@@ -11,6 +12,9 @@ namespace SortingVisualizer
     private:
         UserInterface::ControlPanel controls;
         CoreSystem::Array array;
+        
+        CoreSystem::Algorithms::FisherYatesShuffle shuffler;          
+        bool run_shuffler = false;
 
     public:
         Application();

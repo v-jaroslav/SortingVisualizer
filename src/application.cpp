@@ -7,7 +7,8 @@
 
 namespace SortingVisualizer
 {
-    Application::Application()
+    Application::Application() 
+        : shuffler(array)
     {
         SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_HIGHDPI | FLAG_MSAA_4X_HINT);
 
@@ -28,6 +29,20 @@ namespace SortingVisualizer
 
             // Draw the control panel last, so that it is on top of everything.
             this->controls.Draw();
+            
+            if (this->controls.WasShuffleElementsBtnPressed())
+            {
+                this->shuffler.Reset();
+                this->run_shuffler = true;
+            }
+            
+            if (this->run_shuffler)
+            {
+                if (this->shuffler.IsDone())
+                    this->run_shuffler = false;
+                else
+                    this->shuffler.Step();
+            }
 
             EndDrawing();
         }
