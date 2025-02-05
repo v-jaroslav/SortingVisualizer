@@ -59,4 +59,10 @@ namespace SortingVisualizer::CoreSystem
             DrawRectangleV({ i * element_width, UserInterface::GetScaledHeight() - element_height }, { element_width, element_height }, this->buffer[i].GetFill());
         }
     }
+
+    void Array::ResetFocus()
+    {
+        for (int i = 0; i < this->n_visible_elems; ++i)
+            this->buffer[i].SetFocus(false);
+    }
 }

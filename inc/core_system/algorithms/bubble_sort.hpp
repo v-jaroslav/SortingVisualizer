@@ -1,11 +1,11 @@
-#ifndef SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_SORTING_INSERTION_SORT_HPP
-#define SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_SORTING_INSERTION_SORT_HPP
+#ifndef SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_SORTING_BUBBLE_SORT_HPP
+#define SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_SORTING_BUBBLE_SORT_HPP
 
 #include "core_system/algorithms/algorithm.hpp"
 
 namespace SortingVisualizer::CoreSystem::Algorithms
 {
-    class InsertionSort : public Algorithm
+    class BubbleSort : public Algorithm
     {
     protected:
         int i, j;
@@ -18,3 +18,4 @@ namespace SortingVisualizer::CoreSystem::Algorithms
 }
 
 #endif
+

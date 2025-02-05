@@ -24,6 +24,8 @@ namespace SortingVisualizer::CoreSystem
         const Element& operator[] (int i) const;
 
         void Draw();
+
+        void ResetFocus();
     };
 }
 

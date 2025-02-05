@@ -3,8 +3,8 @@
 
 namespace SortingVisualizer::CoreSystem
 {
-    Element::Element(int initial_value, Color initial_fill)
-        : value(initial_value), current_fill(initial_fill) { }
+    Element::Element(int initial_value, Color regular_color, Color focus_color)
+        : value(initial_value), focus(false), current_fill(regular_color), focus_fill(focus_color) { }
 
     void Element::SetValue(int value)
     {
@@ -16,12 +16,10 @@ namespace SortingVisualizer::CoreSystem
         this->current_fill = fill;
     }
 
-    void Element::Focus(Color focus)
+    void Element::SetFocus(bool focus)
     {
-        this->focus_fill = focus;
-        this->focus = true;
+        this->focus = focus;
     }
-
 
     int Element::GetValue() const
     {
@@ -31,11 +29,7 @@ namespace SortingVisualizer::CoreSystem
     Color Element::GetFill()
     {
         if (this->focus)
-        {
-            this->focus = false;
             return this->focus_fill;
-        }
-
         return this->current_fill;
     }
     

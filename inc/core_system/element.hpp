@@ -15,12 +15,12 @@ namespace SortingVisualizer::CoreSystem
         Color focus_fill;
         
     public:
-        Element(int initial_value = 0, Color initial_fill = WHITE);
+        Element(int initial_value = 0, Color regular_color = WHITE, Color focus_color = RED);
 
         void SetValue(int value);
         void SetFill(Color fill);
         
-        void Focus(Color focus);
+        void SetFocus(bool focus = true);
 
         int GetValue() const;
         Color GetFill();
