@@ -22,6 +22,8 @@ namespace SortingVisualizer
         bool run_sort = false;
         std::shared_ptr<CoreSystem::Algorithms::Algorithm> sorting_strategy;
 
+        using AlgorithmFactory = CoreSystem::Algorithms::AlgorithmFactory;
+
         void RenderGraphics();
         void HandleUserInput();
         void UpdateLogic();

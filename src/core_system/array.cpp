@@ -62,6 +62,7 @@ namespace SortingVisualizer::CoreSystem
 
     void Array::ResetFocus()
     {
+        // Reset focus of all elements when asked to do so.
         for (int i = 0; i < this->n_visible_elems; ++i)
             this->buffer[i].SetFocus(false);
     }

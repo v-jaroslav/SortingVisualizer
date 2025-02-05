@@ -85,7 +85,7 @@ namespace SortingVisualizer::UserInterface
         GuiLabel(second_row_bounds, SORTING_ALGORITHM_LABEL);
         
         second_row_bounds.x += quarter;
-        if (GuiDropdownBox(second_row_bounds, ALGORITHM_OPTIONS, &algorithm_type, show_algorithm_dropdown))
+        if (GuiDropdownBox(second_row_bounds, ALGORITHM_OPTIONS, (int*)(&algorithm_type), show_algorithm_dropdown))
             show_algorithm_dropdown = !show_algorithm_dropdown;
 
 
@@ -124,7 +124,7 @@ namespace SortingVisualizer::UserInterface
         return this->number_of_elements;
     }
 
-    int ControlPanel::GetAlgorithmType() const
+    ControlPanel::AlgorithmType ControlPanel::GetAlgorithmType() const
     {
         return this->algorithm_type;
     }

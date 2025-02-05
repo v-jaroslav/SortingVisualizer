@@ -4,6 +4,7 @@
 #include <raygui.h>
 
 #include "constants.hpp"
+#include "core_system/algorithms/algorithm_factory.hpp"
 
 namespace SortingVisualizer::UserInterface
 {
@@ -20,7 +21,9 @@ namespace SortingVisualizer::UserInterface
         bool show_mute_button = true;
 
         float number_of_elements = Constants::Application::MIN_NUM_OF_ELEMS;
-        int algorithm_type = 0;
+        
+        using AlgorithmType = CoreSystem::Algorithms::AlgorithmFactory::AlgorithmType;
+        AlgorithmType algorithm_type = AlgorithmType::BUBBLE_SORT;
         
         bool run_algorithm = false;
         bool stop_algorithm = false;
@@ -34,7 +37,7 @@ namespace SortingVisualizer::UserInterface
         void Draw();
         
         int GetNumberOfElements() const;
-        int GetAlgorithmType() const;
+        AlgorithmType GetAlgorithmType() const;
         
         bool WasRunAlgorithmBtnPressed();
         bool WasStopAlgorithmBtnPressed();

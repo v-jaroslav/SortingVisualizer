@@ -1,6 +1,7 @@
 #include "constants.hpp"
 #include "application.hpp"
-#include "core_system/algorithms/bubble_sort.hpp"
+#include "core_system/algorithms/algorithm_factory.hpp"
+#include <iostream>
 
 #define RAYGUI_IMPLEMENTATION
 #include <raylib.h>
@@ -17,7 +18,7 @@ namespace SortingVisualizer
         InitWindow(INITIAL_WIDTH, INITIAL_HEIGHT, TITLE);
         SetWindowMinSize(INITIAL_WIDTH, INITIAL_HEIGHT);
         
-        this->sorting_strategy = std::make_shared<CoreSystem::Algorithms::BubbleSort>(array);
+        this->sorting_strategy = AlgorithmFactory::GetInstance().CreateAlgorithm(controls.GetAlgorithmType(), array);
     }
 
     void Application::RenderGraphics()
@@ -30,7 +31,6 @@ namespace SortingVisualizer
         this->controls.Draw();
             
         EndDrawing();
-
     }
 
     void Application::HandleUserInput()
@@ -41,6 +41,10 @@ namespace SortingVisualizer
 
         if (this->controls.WasRunAlgorithmBtnPressed())
         {
+            std::cout << (int)controls.GetAlgorithmType() << std::endl;
+            // Update the sorting strategy based on the control panel.
+            this->sorting_strategy = AlgorithmFactory::GetInstance().CreateAlgorithm(controls.GetAlgorithmType(), array);
+
             // We first want to run the shuffler, then the actual sorting strategy.
             this->run_shuffler = true;    
             this->run_sort = false;
