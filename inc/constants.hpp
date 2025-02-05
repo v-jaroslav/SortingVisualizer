@@ -40,6 +40,15 @@ namespace SortingVisualizer::Constants
         inline const char* MUTE_AUDIO_BTN     = "Mute Audio";
         inline const char* PLAY_AUDIO_BTN     = "PLay Audio";
     }
+    
+    namespace Audio
+    {
+        constexpr int MAX_FREQUENCY = 1000;
+        constexpr int AMPLITUDE = 32000;
+        constexpr int SAMPLING_RATE = 44100;
+        constexpr int SAMPLE_SIZE = 16;
+        constexpr int BUFFER_SIZE = 4096;
+    }
 }
 
 #endif

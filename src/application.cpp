@@ -1,7 +1,8 @@
 #include "constants.hpp"
 #include "application.hpp"
+
 #include "core_system/algorithms/algorithm_factory.hpp"
-#include <iostream>
+#include "core_system/tone_generator.hpp"
 
 #define RAYGUI_IMPLEMENTATION
 #include <raylib.h>
@@ -41,7 +42,9 @@ namespace SortingVisualizer
 
         if (this->controls.WasRunAlgorithmBtnPressed())
         {
-            std::cout << (int)controls.GetAlgorithmType() << std::endl;
+            if (play_sound)
+                CoreSystem::ToneGenerator::Play();
+
             // Update the sorting strategy based on the control panel.
             this->sorting_strategy = AlgorithmFactory::GetInstance().CreateAlgorithm(controls.GetAlgorithmType(), array);
 
@@ -56,6 +59,20 @@ namespace SortingVisualizer
             // Stop both the shuffler and sorting strategy.
             this->run_shuffler = false;
             this->run_sort = false;
+            CoreSystem::ToneGenerator::Stop();
+        }
+        
+        if (this->controls.WasMuteAudioBtnPressed())
+        {
+            this->play_sound = false;
+            CoreSystem::ToneGenerator::Stop();
+        }
+
+        if (this->controls.WasPlayAudioBtnPressed())
+        {
+            this->play_sound = true;
+            if (this->run_shuffler || this->run_sort)
+                CoreSystem::ToneGenerator::Play();
         }
     }
 
@@ -90,6 +107,7 @@ namespace SortingVisualizer
 
     void Application::run()
     {
+        CoreSystem::ToneGenerator::Initialize();
         float delta_time_accumulator = 0.0f;
 
         while (!WindowShouldClose())

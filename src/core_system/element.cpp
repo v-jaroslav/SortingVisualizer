@@ -1,5 +1,6 @@
 #include "core_system/element.hpp"
-
+#include "core_system/tone_generator.hpp"
+#include "constants.hpp"
 
 namespace SortingVisualizer::CoreSystem
 {
@@ -19,6 +20,7 @@ namespace SortingVisualizer::CoreSystem
     void Element::SetFocus(bool focus)
     {
         this->focus = focus;
+        ToneGenerator::SetFrequency((1.0f * this->value / Constants::Application::MAX_NUM_OF_ELEMS) * Constants::Audio::MAX_FREQUENCY);
     }
 
     int Element::GetValue() const
