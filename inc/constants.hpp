@@ -1,12 +1,12 @@
-#ifndef CONSTANTS_HPP
-#define CONSTANTS_HPP
+#ifndef SORTING_VISUALIZER_CONSTANTS_HPP
+#define SORTING_VISUALIZER_CONSTANTS_HPP
 
-namespace Constants
+namespace SortingVisualizer::Constants
 {
     namespace Application
     {
-        constexpr int MAX_NUM_OF_ELEMS = 100;    
-        constexpr int MIN_NUM_OF_ELEMS = 10;    
+        constexpr int MAX_NUM_OF_ELEMS = 500;
+        constexpr int MIN_NUM_OF_ELEMS = 10;
     }
 
     namespace Window
@@ -27,7 +27,7 @@ namespace Constants
         inline const char* STATUS_TITLE_CLOSED = "Control Panel (Closed)";
 
         inline const char* MIN_ELEMS_SLIDER          = "10";
-        inline const char* MAX_ELEMS_SLIDER          = "100";
+        inline const char* MAX_ELEMS_SLIDER          = "500";
         inline const char* SLIDER_LABEL = "Number of elements:";
         
         inline const char* SORTING_ALGORITHM_LABEL = "Sorting algorithm: ";

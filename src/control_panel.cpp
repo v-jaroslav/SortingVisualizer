@@ -1,25 +1,24 @@
 #include "control_panel.hpp"
-#include "constants.hpp"
 
-namespace UserInterface
+namespace SortingVisualizer::UserInterface
 {
     float GetScaledWidth()
     {
-        return GetRenderWidth() / GetWindowScaleDPI().x;
+        // Read the HIGHDPI scale factor only once and store it in a static variable, as it is costly operation as you have to ask OS for that information.
+        // It is not expected for user to change HIGHDPI settings randomly, if he does, he may just restart the app.
+        static float x_scale = GetWindowScaleDPI().x;
+        return GetRenderWidth() / x_scale;
     }
 
     float GetScaledHeight()
     {
-        return GetRenderHeight() / GetWindowScaleDPI().y;
+        static float y_scale = GetWindowScaleDPI().y;
+        return GetRenderHeight() / y_scale;
     }
 
     void ControlPanel::Draw()
     {
-        using Constants::UserInterface::ControlPanel::MARGIN_PX;
-        using Constants::UserInterface::ControlPanel::BUTTON_SIZE;
-        using Constants::UserInterface::ControlPanel::STATUS_BAR_HEIGHT;
-        using Constants::UserInterface::ControlPanel::STATUS_TITLE_OPEN;
-        using Constants::UserInterface::ControlPanel::STATUS_TITLE_CLOSED;
+        using namespace Constants::UserInterface::ControlPanel;
 
         if (this->show_panel)
         {
@@ -53,22 +52,7 @@ namespace UserInterface
 
     void ControlPanel::DrawControls(const Rectangle& relative_to)
     {
-        using Constants::UserInterface::ControlPanel::MARGIN_PX;
-        using Constants::UserInterface::ControlPanel::PADDING_PX;
-        using Constants::UserInterface::ControlPanel::STATUS_BAR_HEIGHT;
-
-        using Constants::UserInterface::ControlPanel::SLIDER_LABEL;
-        using Constants::UserInterface::ControlPanel::MIN_ELEMS_SLIDER;
-        using Constants::UserInterface::ControlPanel::MAX_ELEMS_SLIDER;
-
-        using Constants::UserInterface::ControlPanel::SORTING_ALGORITHM_LABEL;
-        using Constants::UserInterface::ControlPanel::ALGORITHM_OPTIONS;
-
-        using Constants::UserInterface::ControlPanel::RUN_ALGORITHM_BTN;
-        using Constants::UserInterface::ControlPanel::STOP_ALGORITHM_BTN;
-        using Constants::UserInterface::ControlPanel::SHUFFLE_ELEMS_BTN;
-        using Constants::UserInterface::ControlPanel::MUTE_AUDIO_BTN;
-        using Constants::UserInterface::ControlPanel::PLAY_AUDIO_BTN;
+        using namespace Constants::UserInterface::ControlPanel;
 
         using Constants::Application::MIN_NUM_OF_ELEMS;
         using Constants::Application::MAX_NUM_OF_ELEMS;

@@ -1,5 +1,4 @@
 #include "application.hpp"
-#include "control_panel.hpp"
 #include "constants.hpp"
 
 #define RAYGUI_IMPLEMENTATION
@@ -19,15 +18,16 @@ namespace SortingVisualizer
 
     void Application::run()
     {
-        UserInterface::ControlPanel controls;
-
         while (!WindowShouldClose())
         {
             BeginDrawing();
             ClearBackground(BLACK);
             
+            this->array.SetNumberOfVisibleElements(this->controls.GetNumberOfElements());
+            this->array.Draw();
+
             // Draw the control panel last, so that it is on top of everything.
-            controls.Draw();
+            this->controls.Draw();
 
             EndDrawing();
         }

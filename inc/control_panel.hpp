@@ -1,9 +1,11 @@
-#ifndef USER_INTERFACE_CONTROL_PANEL_HPP
-#define USER_INTERFACE_CONTROL_PANEL_HPP
+#ifndef SORTING_VISUALIZER_USER_INTERFACE_CONTROL_PANEL_HPP
+#define SORTING_VISUALIZER_USER_INTERFACE_CONTROL_PANEL_HPP
 
 #include <raygui.h>
 
-namespace UserInterface
+#include "constants.hpp"
+
+namespace SortingVisualizer::UserInterface
 {
     // We have these functions here, because raygui.h header library doesn't work properly on HighDPI screens.
     float GetScaledWidth();
@@ -17,7 +19,7 @@ namespace UserInterface
         bool show_algorithm_dropdown = false;
         bool show_mute_button = true;
 
-        float number_of_elements = 0;
+        float number_of_elements = Constants::Application::MIN_NUM_OF_ELEMS;
         int algorithm_type = 0;
         
         bool run_algorithm = false;
