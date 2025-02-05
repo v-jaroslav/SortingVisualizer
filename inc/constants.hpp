@@ -7,6 +7,7 @@ namespace SortingVisualizer::Constants
     {
         constexpr int MAX_NUM_OF_ELEMS = 500;
         constexpr int MIN_NUM_OF_ELEMS = 10;
+        constexpr float DELTA_TIME     = 1.0f/60.0f;
     }
 
     namespace Window

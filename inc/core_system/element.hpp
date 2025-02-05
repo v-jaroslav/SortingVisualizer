@@ -9,16 +9,21 @@ namespace SortingVisualizer::CoreSystem
     {
     private:
         int value;
-        Color fill;
+        bool focus;
 
+        Color current_fill;
+        Color focus_fill;
+        
     public:
         Element(int initial_value = 0, Color initial_fill = WHITE);
 
         void SetValue(int value);
         void SetFill(Color fill);
+        
+        void Focus(Color focus);
 
         int GetValue() const;
-        Color GetFill() const;
+        Color GetFill();
         
         bool operator <  (const Element& other) const;
         bool operator <= (const Element& other) const;

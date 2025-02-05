@@ -15,6 +15,10 @@ namespace SortingVisualizer
         
         CoreSystem::Algorithms::FisherYatesShuffle shuffler;          
         bool run_shuffler = false;
+        
+        void RenderGraphics();
+        void HandleUserInput();
+        void UpdateLogic();
 
     public:
         Application();

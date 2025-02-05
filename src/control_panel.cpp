@@ -59,10 +59,11 @@ namespace SortingVisualizer::UserInterface
         
         int font_size = GetFontDefault().baseSize;
         int quarter = relative_to.width / 4;
+        int thirds = relative_to.width / 3;
 
         Rectangle first_row_bounds  { relative_to.x + MARGIN_PX,
                                       relative_to.y + STATUS_BAR_HEIGHT + MARGIN_PX,
-                                      quarter - 2*MARGIN_PX,
+                                      thirds - 2*MARGIN_PX,
                                       font_size + PADDING_PX };
 
         Rectangle second_row_bounds { relative_to.x + MARGIN_PX,
@@ -93,16 +94,12 @@ namespace SortingVisualizer::UserInterface
         if (GuiButton(first_row_bounds, RUN_ALGORITHM_BTN))
             this->run_algorithm = true;
         
-        first_row_bounds.x += quarter;
+        first_row_bounds.x += thirds;
         if (GuiButton(first_row_bounds, STOP_ALGORITHM_BTN))
             this->stop_algorithm = true;
 
-        first_row_bounds.x += quarter;
-        if (GuiButton(first_row_bounds, SHUFFLE_ELEMS_BTN))
-            this->shuffle_elements = true;
-
         // Show either the mute button or play audio button depending on which one was pressed last.
-        first_row_bounds.x += quarter;
+        first_row_bounds.x += thirds;
         if (show_mute_button && GuiButton(first_row_bounds, MUTE_AUDIO_BTN))
         {
             this->show_mute_button = false;
@@ -140,11 +137,6 @@ namespace SortingVisualizer::UserInterface
     bool ControlPanel::WasStopAlgorithmBtnPressed()
     {
         return this->GetAndClear(this->stop_algorithm);
-    }
-
-    bool ControlPanel::WasShuffleElementsBtnPressed()
-    {
-        return this->GetAndClear(this->shuffle_elements);
     }
 
     bool ControlPanel::WasMuteAudioBtnPressed()

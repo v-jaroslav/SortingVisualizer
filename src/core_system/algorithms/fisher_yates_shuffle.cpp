@@ -25,6 +25,8 @@ namespace SortingVisualizer::CoreSystem::Algorithms
         
         int new_index = GenerateRandomNumber(0, this->swap_next); 
         std::swap(this->array[this->swap_next], this->array[new_index]);
+        this->array[this->swap_next].Focus(RED);
+        this->array[new_index].Focus(RED);
         --this->swap_next;
     }
 }

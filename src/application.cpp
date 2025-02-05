@@ -5,6 +5,9 @@
 #include <raylib.h>
 #include <raygui.h>
 
+#include <thread>
+#include <chrono>
+
 namespace SortingVisualizer
 {
     Application::Application() 
@@ -17,34 +20,49 @@ namespace SortingVisualizer
         SetWindowMinSize(INITIAL_WIDTH, INITIAL_HEIGHT);
     }
 
+    void Application::RenderGraphics()
+    {
+        BeginDrawing();
+        ClearBackground(BLACK);
+        
+        // Draw the control panel last, so that it is on top of everything.
+        this->array.Draw();
+        this->controls.Draw();
+            
+        EndDrawing();
+    }
+
+    void Application::HandleUserInput()
+    {
+        this->array.SetNumberOfVisibleElements(this->controls.GetNumberOfElements());
+
+        if (this->controls.WasRunAlgorithmBtnPressed())
+        {
+            
+        }
+    }
+
+    void Application::UpdateLogic()
+    {
+
+    }
+
     void Application::run()
     {
+        float delta_time_accumulator = 0.0f;
+
         while (!WindowShouldClose())
         {
-            BeginDrawing();
-            ClearBackground(BLACK);
+            RenderGraphics();
+            HandleUserInput();
             
-            this->array.SetNumberOfVisibleElements(this->controls.GetNumberOfElements());
-            this->array.Draw();
-
-            // Draw the control panel last, so that it is on top of everything.
-            this->controls.Draw();
-            
-            if (this->controls.WasShuffleElementsBtnPressed())
+            // Update logic at a fixed rate, (1/DELTA_TIME) times per second, regardless of the frame rate.
+            delta_time_accumulator += GetFrameTime();
+            while (delta_time_accumulator >= Constants::Application::DELTA_TIME)
             {
-                this->shuffler.Reset();
-                this->run_shuffler = true;
+                delta_time_accumulator -= Constants::Application::DELTA_TIME;
+                UpdateLogic(); 
             }
-            
-            if (this->run_shuffler)
-            {
-                if (this->shuffler.IsDone())
-                    this->run_shuffler = false;
-                else
-                    this->shuffler.Step();
-            }
-
-            EndDrawing();
         }
     }
 }

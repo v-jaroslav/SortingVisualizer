@@ -24,7 +24,6 @@ namespace SortingVisualizer::UserInterface
         
         bool run_algorithm = false;
         bool stop_algorithm = false;
-        bool shuffle_elements = false;
         bool mute_audio = false;
         bool play_audio = false;
 
@@ -39,7 +38,6 @@ namespace SortingVisualizer::UserInterface
         
         bool WasRunAlgorithmBtnPressed();
         bool WasStopAlgorithmBtnPressed();
-        bool WasShuffleElementsBtnPressed();
         bool WasMuteAudioBtnPressed();
         bool WasPlayAudioBtnPressed();
     };
