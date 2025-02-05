@@ -32,7 +32,7 @@ namespace SortingVisualizer::Constants
         inline const char* SLIDER_LABEL = "Number of elements:";
         
         inline const char* SORTING_ALGORITHM_LABEL = "Sorting algorithm: ";
-        inline const char* ALGORITHM_OPTIONS = "Bubble Sort;Selection Sort;Insertion Sort;Counting Sort;Merge Sort;Quick Sort;Boggo Sort";
+        inline const char* ALGORITHM_OPTIONS = "Bubble Sort;Selection Sort;Insertion Sort;Counting Sort;Merge Sort;Quick Sort;Bogo Sort";
         
         inline const char* RUN_ALGORITHM_BTN  = "Run Algorithm";
         inline const char* STOP_ALGORITHM_BTN = "Stop Algorithm";
