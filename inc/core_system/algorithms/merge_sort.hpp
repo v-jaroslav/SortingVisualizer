@@ -1,5 +1,5 @@
-#ifndef SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_SORTING_MERGE_SORT_HPP
-#define SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_SORTING_MERGE_SORT_HPP
+#ifndef SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_MERGE_SORT_HPP
+#define SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_MERGE_SORT_HPP
 
 #include "core_system/algorithms/algorithm.hpp"
 
@@ -14,10 +14,10 @@ namespace SortingVisualizer::CoreSystem::Algorithms
         bool coppied;
         bool merge_done;
 
-        int left_len, a;
+        int left_len, l;
         int left_tmp[Constants::Application::MAX_NUM_OF_ELEMS];
 
-        int right_len, b;
+        int right_len, r;
         int right_tmp[Constants::Application::MAX_NUM_OF_ELEMS];
 
         int free;

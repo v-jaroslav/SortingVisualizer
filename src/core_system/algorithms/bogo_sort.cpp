@@ -22,7 +22,6 @@ namespace SortingVisualizer::CoreSystem::Algorithms
             int new_index = GenerateRandomNumber(0, this->i_shuffle);
             std::swap(this->array[i_shuffle], this->array[new_index]);
 
-            // Focus the elements you swapped.
             this->array[i_shuffle].SetFocus();
             this->array[new_index].SetFocus();
 
@@ -31,7 +30,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
         }
         else if (this->j_check + 1 < this->array.GetNumberOfVisibleElements()) 
         {
-            // If we have the neigbhor (j + 1) to the right, then great we have an element to compare the current one j-th one to. Focus both of them.
+            // If we have the neigbhor (j + 1) to the right, then great we have an element to compare the current one j-th one to. 
             this->array[j_check].SetFocus();
             this->array[j_check + 1].SetFocus();
 

@@ -7,7 +7,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
 {
     void FisherYatesShuffle::Prepare()
     {
-        // The fisher yates shuffle starts from the last element, so let the next index to swap with other random index be the last index.
+        // The fisher yates shuffle starts from the last element.
         this->swap_next = this->array.GetNumberOfVisibleElements() - 1;
     }
 
@@ -20,11 +20,10 @@ namespace SortingVisualizer::CoreSystem::Algorithms
             return;
         }
         
-        // Generate random index in range of [0, swap_next], thats the new index of the element at index swap_next, so swap the two elements at the current and new index.
+        // Generate random index in range of [0, swap_next], thats the new index of the element at index swap_next, so swap the two elements.
         int new_index = GenerateRandomNumber(0, this->swap_next); 
         std::swap(this->array[this->swap_next], this->array[new_index]);
 
-        // Focus the newly swapped elements as a graphical feedback to the user.
         this->array[this->swap_next].SetFocus();
         this->array[new_index].SetFocus();
 

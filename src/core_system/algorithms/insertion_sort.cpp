@@ -6,7 +6,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
 {
     void InsertionSort::Prepare()
     {
-        // Insertion sort is basically card sort, we start from the second element, so use the 2nd index as initial index.
+        // Insertion sort is basically card sort, we start from the second element and go backwards, so use the 2nd index as initial index.
         this->i = this->j = 1;
     }
 
@@ -21,8 +21,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
         
         if (this->j - 1 >= 0 && this->array[this->j - 1] > this->array[this->j])
         {
-            // If we do have a previous element, and if previous element is greater than current one.
-            // Then swap the two elements, and focus them both as a graphical feedback.
+            // If we do have a previous element, and if previous element is greater than current one, then swap them.
             std::swap(this->array[this->j - 1], this->array[this->j]);
             this->array[this->j - 1].SetFocus();
             this->array[this->j].SetFocus();
