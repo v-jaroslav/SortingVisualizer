@@ -13,8 +13,8 @@ namespace SortingVisualizer::CoreSystem::Algorithms
     void BubbleSort::Step()
     {
         // If we have gone through n - 1 rounds, then all elements must be sorted, therefore we are done.
-        // This is true because in every round one element gets sorted to its proper position, it "bubbles up" to its position.
-        // As we ignore the last round, in which we would sort a single element, that element won't be colored blue, so we have to do it here.
+        // This is true because in every round one element gets sorted to its proper position, it "bubbles up" to its position, if we have (n - 1) elements sorted, we really have n elements sorted!
+        // Because we ignore the last round, in which we would "sort" a single element, that element won't be set to be "sorted", so we have to do it here manually.
         if (this->i >= this->array.GetNumberOfVisibleElements() - 1)
         {
             this->finished = true;
@@ -22,7 +22,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
             return;
         }
 
-        // When comparing two elements, set their color to red.
+        // When comparing two elements, let them be focused.
         this->array[j].SetFocus();
         this->array[j + 1].SetFocus();
 
@@ -33,10 +33,14 @@ namespace SortingVisualizer::CoreSystem::Algorithms
         // Move to the next element.
         ++this->j;
 
-        // If we finished one round of the bubble sort, move onto the next round. And color the newly sorted element with blue, as its in correct position.
-        // The last i elements are sorted in proper way, and thus there is no need to compare the last i elements.
-        if (this->j >= this->array.GetNumberOfVisibleElements() - 1 - i) {
-            this->array[this->array.GetNumberOfVisibleElements() - 1 - i].SetSorted();
+        // If we finished one round of the bubble sort, move onto the next round from beginning (j=0).
+        // And let the newly sorted element be "in sorted state", as its in correct position now.
+        // The last (i + 1) elements are sorted in proper way, so we subtract (i + 1), we add 1 as i=0 is first round.
+        // And yes we do want to start a new round if i=0 and j >= (n - 1) as (n-1)th element does not have the right neighbor.
+        // And i mean remember, we are comparing after all j-th and (j + 1)th element, in that case we can't do that.
+        if (this->j >= this->array.GetNumberOfVisibleElements() - (i + 1)) 
+        {
+            this->array[this->array.GetNumberOfVisibleElements() - (i + 1)].SetSorted();
             this->j = 0;
             ++this->i;
         }
