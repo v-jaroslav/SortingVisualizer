@@ -14,7 +14,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
     {
         // If we have gone through n - 1 rounds, then all elements must be sorted, therefore we are done.
         // This is true because in every round one element gets sorted to its proper position, it "bubbles up" to its position, if we have (n - 1) elements sorted, we really have n elements sorted!
-        // Because we ignore the last round, in which we would "sort" a single element, that element won't be set to be "sorted", so we have to do it here manually.
+        // Because we ignored the last round, in which we would "sort" a single element, that element won't be set to be "sorted", so we have to do it here manually.
         if (this->i >= this->array.GetNumberOfVisibleElements() - 1)
         {
             this->finished = true;
@@ -33,14 +33,13 @@ namespace SortingVisualizer::CoreSystem::Algorithms
         // Move to the next element.
         ++this->j;
 
-        // If we finished one round of the bubble sort, move onto the next round from beginning (j=0).
+        // If we finished one round of the bubble sort, move onto the next round from the beginning (j=0), and increment the i as we are starting new round.
         // And let the newly sorted element be "in sorted state", as its in correct position now.
-        // The last (i + 1) elements are sorted in proper way, so we subtract (i + 1), we add 1 as i=0 is first round.
-        // And yes we do want to start a new round if i=0 and j >= (n - 1) as (n-1)th element does not have the right neighbor.
-        // And i mean remember, we are comparing after all j-th and (j + 1)th element, in that case we can't do that.
-        if (this->j >= this->array.GetNumberOfVisibleElements() - (i + 1)) 
+        // That newly sorted element is at index ((n - 1) - i), and if j is now at that index, then we are done. 
+        // As that element is sorted for sure, no need to compare it further, in every bubble sort round the greatest unsorted value gets sorted in its proper position.
+        if (this->j >= (this->array.GetNumberOfVisibleElements() - 1) - i) 
         {
-            this->array[this->array.GetNumberOfVisibleElements() - (i + 1)].SetSorted();
+            this->array[(this->array.GetNumberOfVisibleElements() - 1) - i].SetSorted();
             this->j = 0;
             ++this->i;
         }
