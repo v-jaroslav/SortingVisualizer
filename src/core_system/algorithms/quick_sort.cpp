@@ -86,7 +86,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
             this->high = r.second;
 
             if (this->low == this->high) {
-                this->array[this->low].SetFill(BLUE);
+                this->array[this->low].SetSorted();
             }
 
             if (this->low < this->high) {
@@ -104,7 +104,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
         this->Partition();
 
         if (this->done_partitioning) {
-            this->array[pivot_index].SetFill(BLUE);
+            this->array[pivot_index].SetSorted();
 
             if ((pivot_index - 1) - low + 1 <= high - (pivot_index + 1) + 1) {
                 ranges.push({ low, pivot_index - 1 });

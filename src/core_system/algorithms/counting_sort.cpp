@@ -26,7 +26,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
             }
 
             this->array[this->free].SetValue(this->k);
-            this->array[this->free].SetFill(BLUE);
+            this->array[this->free].SetSorted();
 
             --this->histogram[this->k];
 

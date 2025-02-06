@@ -1,8 +1,6 @@
 #include "core_system/array.hpp"
 #include "control_panel.hpp"
 
-#include <iostream>
-
 namespace SortingVisualizer::CoreSystem
 {
     Array::Array()
@@ -15,15 +13,21 @@ namespace SortingVisualizer::CoreSystem
     {
         for (int i = 0; i < this->n_visible_elems; ++i)
         {
-            this->buffer[i].SetFill(WHITE); 
+            // We also set the values here, as initially elements have value equal to 0.
+            // And also because maybe before changing the number of visible elements the array is jumbled up, and we want to have it sorted again.
+            this->buffer[i].SetFocus(false); 
+            this->buffer[i].SetSorted(false); 
             this->buffer[i].SetValue(i + 1);
         }
     }
     
     void Array::SetNumberOfVisibleElements(int n_visible_elems)
     {
+        // There is no need to reinitialize the buffer and run the whole loop for that, in case the n_visible_elems is already equal to the value we have.
         if (this->n_visible_elems == n_visible_elems)
             return;
+
+        // Otherwise first remember the value and then do reinitialize the buffer.
         this->n_visible_elems = n_visible_elems;
         this->InitializeBuffer();
     }
@@ -48,7 +52,7 @@ namespace SortingVisualizer::CoreSystem
         for (int i = 0; i < this->n_visible_elems; ++i)
         {
             // We want to display the whole array in the given window, so grab the width of the window, and divide it with the number of elements to display, to get the width of a single element.
-            float element_width = ((float)UserInterface::GetScaledWidth()) / this->n_visible_elems;
+            float element_width = UserInterface::GetScaledWidth() / this->n_visible_elems;
 
             // Grab the value of the element, and divide it with the number of elements, to get a %, then multiply that with the height of the window, in order to get the height of the element.
             float element_height = ((float)this->buffer[i].GetValue()) / this->n_visible_elems * UserInterface::GetScaledHeight();

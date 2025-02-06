@@ -24,7 +24,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
                     this->array[this->min_i] = temp;
                 }
 
-                this->array[this->i].SetFill(BLUE);
+                this->array[this->i].SetSorted();
 
                 ++this->i;
                 this->min_i = this->i;
@@ -34,7 +34,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
             return;
         }
 
-         this->array[this->array.GetNumberOfVisibleElements() - 1].SetFill(BLUE);
+         this->array[this->array.GetNumberOfVisibleElements() - 1].SetSorted();
 
         this->finished = true;
     }

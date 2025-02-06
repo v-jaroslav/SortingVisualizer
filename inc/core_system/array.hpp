@@ -20,11 +20,11 @@ namespace SortingVisualizer::CoreSystem
         void SetNumberOfVisibleElements(int n_visible_elems);
         int GetNumberOfVisibleElements() const;
         
+        // Both versions of operators are implemented for the sake of completeness.
         Element& operator[] (int i);
         const Element& operator[] (int i) const;
 
         void Draw();
-
         void ResetFocus();
     };
 }

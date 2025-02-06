@@ -18,7 +18,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
         if (this->i >= this->array.GetNumberOfVisibleElements() - 1)
         {
             this->finished = true;
-            this->array[0].SetFill(BLUE);
+            this->array[0].SetSorted();
             return;
         }
 
@@ -36,7 +36,7 @@ namespace SortingVisualizer::CoreSystem::Algorithms
         // If we finished one round of the bubble sort, move onto the next round. And color the newly sorted element with blue, as its in correct position.
         // The last i elements are sorted in proper way, and thus there is no need to compare the last i elements.
         if (this->j >= this->array.GetNumberOfVisibleElements() - 1 - i) {
-            this->array[this->array.GetNumberOfVisibleElements() - 1 - i].SetFill(BLUE);
+            this->array[this->array.GetNumberOfVisibleElements() - 1 - i].SetSorted();
             this->j = 0;
             ++this->i;
         }

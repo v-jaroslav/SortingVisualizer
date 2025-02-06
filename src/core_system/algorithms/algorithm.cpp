@@ -15,7 +15,10 @@ namespace SortingVisualizer::CoreSystem::Algorithms
     {
         this->finished = false;
         for (int i = 0; i < this->array.GetNumberOfVisibleElements(); ++i)
-            this->array[i].SetFill(WHITE);
+        {
+            this->array[i].SetFocus(false);
+            this->array[i].SetSorted(false);
+        }
         this->Prepare();
     }
 }
