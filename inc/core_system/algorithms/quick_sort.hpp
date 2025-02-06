@@ -12,19 +12,21 @@ namespace SortingVisualizer::CoreSystem::Algorithms
         std::stack<std::pair<int, int>> ranges;
         int low, high;
 
-        int left, right;
         bool valid_ptrs;
-        bool left_checked;
-        bool right_checked;
+
+        int left_ptr;
+        bool move_left_ptr_done;
+        
+        int right_ptr;
+        bool move_right_ptr_done;
 
         Element pivot;
         int pivot_index;
-        bool pivot_set;
 
+        bool initialized_partitioning;
         bool done_partitioning;
 
         void Partition();
-
         void Prepare();
         
     public:
