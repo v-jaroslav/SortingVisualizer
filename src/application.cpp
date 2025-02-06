@@ -21,7 +21,7 @@ namespace SortingVisualizer
         
         this->sorting_strategy = AlgorithmFactory::GetInstance().CreateAlgorithm(controls.GetAlgorithmType(), array);
 
-        CoreSystem::ToneGenerator::Initialize();
+        CoreSystem::ArrayToneGenerator::Initialize();
     }
 
     void Application::RenderGraphics()
@@ -39,13 +39,17 @@ namespace SortingVisualizer
     void Application::HandleUserInput()
     {
         // The user may update the number of visible elements only if he isn't running any sorting algorithm.
+        // Also whenever user updates the number of visible elements, update tone generator with it.
         if (!this->run_shuffler && !this->run_sort)
+        {
             this->array.SetNumberOfVisibleElements(this->controls.GetNumberOfElements());
+            CoreSystem::ArrayToneGenerator::SetDivisionFactor(this->controls.GetNumberOfElements());
+        }
 
         if (this->controls.WasRunAlgorithmBtnPressed())
         {
             if (play_sound)
-                CoreSystem::ToneGenerator::Play();
+                CoreSystem::ArrayToneGenerator::Play();
 
             // Update the sorting strategy based on the control panel.
             this->sorting_strategy = AlgorithmFactory::GetInstance().CreateAlgorithm(controls.GetAlgorithmType(), array);
@@ -60,20 +64,20 @@ namespace SortingVisualizer
         {
             // Stop both the shuffler and sorting strategy.
             this->run_sort = this->run_shuffler = false;
-            CoreSystem::ToneGenerator::Stop();
+            CoreSystem::ArrayToneGenerator::Stop();
         }
         
         if (this->controls.WasMuteAudioBtnPressed())
         {
             this->play_sound = false;
-            CoreSystem::ToneGenerator::Stop();
+            CoreSystem::ArrayToneGenerator::Stop();
         }
 
         if (this->controls.WasPlayAudioBtnPressed())
         {
             this->play_sound = true;
             if (this->run_shuffler || this->run_sort)
-                CoreSystem::ToneGenerator::Play();
+                CoreSystem::ArrayToneGenerator::Play();
         }
     }
 
@@ -104,7 +108,7 @@ namespace SortingVisualizer
             if (this->sorting_strategy->IsDone())
             {
                 this->run_sort = false;
-                CoreSystem::ToneGenerator::Stop();
+                CoreSystem::ArrayToneGenerator::Stop();
             }
             else
             {
@@ -130,5 +134,10 @@ namespace SortingVisualizer
                 UpdateLogic(); 
             }
         }
+    }
+    
+    Application::~Application()
+    {
+        CoreSystem::ArrayToneGenerator::Dispose();
     }
 }

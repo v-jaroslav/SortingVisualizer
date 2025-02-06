@@ -20,7 +20,7 @@ namespace SortingVisualizer::CoreSystem
     void Element::SetFocus(bool focus)
     {
         this->focus = focus;
-        ToneGenerator::SetFrequency((1.0f * this->value / Constants::Application::MAX_NUM_OF_ELEMS) * Constants::Audio::MAX_FREQUENCY);
+        ArrayToneGenerator::SetFrequency(this->value);
     }
 
     int Element::GetValue() const

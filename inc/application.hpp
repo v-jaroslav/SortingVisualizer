@@ -32,6 +32,8 @@ namespace SortingVisualizer
 
     public:
         Application();
+        ~Application();
+
         void run();
     };
 }

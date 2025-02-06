@@ -45,12 +45,21 @@ namespace SortingVisualizer::Constants
     
     namespace Audio
     {
+        // Maximum frequency that is played when we focus on element with highest visible value.
         constexpr int MAX_FREQUENCY = 1000;
+        
+        // Maximum amplitude will be 32k, since we have 16 bit sample size.
+        constexpr int SAMPLE_SIZE   = 16;
         constexpr int AMPLITUDE     = 32000;
 
-        constexpr int SAMPLE_SIZE   = 16;
+        // How many samples per second will be played.
         constexpr int SAMPLING_RATE = 44100;
+        
+        // Buffer size in bytes, in which we will have amplitudes stored.
         constexpr int BUFFER_SIZE   = 4096;
+        
+        // How many audio channels do we have.
+        constexpr int N_CHANNELS    = 1;
     }
 }
 

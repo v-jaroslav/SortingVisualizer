@@ -6,10 +6,11 @@
 
 namespace SortingVisualizer::CoreSystem
 {
-    class ToneGenerator {
+    class ArrayToneGenerator {
     private:
+        static float wave_idx;
         static float frequency;
-        static float tanhIdx;
+        static float division_factor;
 
         static AudioStream stream;
 
@@ -18,8 +19,8 @@ namespace SortingVisualizer::CoreSystem
     public:
         static void Initialize();
 
-        static float GetFrequency();
-        static void SetFrequency(float frequency);
+        static void SetFrequency(float array_value);
+        static void SetDivisionFactor(float value);
 
         static void Play();
         static void Stop();
