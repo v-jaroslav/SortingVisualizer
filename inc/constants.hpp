@@ -6,7 +6,7 @@ namespace SortingVisualizer::Constants
     namespace Application
     {
         constexpr int MAX_NUM_OF_ELEMS = 500;
-        constexpr int MIN_NUM_OF_ELEMS = 10;
+        constexpr int MIN_NUM_OF_ELEMS = 3;
         constexpr float DELTA_TIME     = 1.0f / 60.0f;
     }
 
@@ -29,7 +29,7 @@ namespace SortingVisualizer::Constants
         inline const char* STATUS_BAR_TITLE_OPEN   = "Control Panel (Open)";
         inline const char* STATUS_BAR_TITLE_CLOSED = "Control Panel (Closed)";
 
-        inline const char* MIN_ELEMS_SLIDER   = "10";
+        inline const char* MIN_ELEMS_SLIDER   = "3";
         inline const char* MAX_ELEMS_SLIDER   = "500";
         inline const char* ELEMS_SLIDER_LABEL = "Number of elements:";
         

@@ -24,23 +24,23 @@ namespace SortingVisualizer::CoreSystem::Algorithms
             case AlgorithmType::BUBBLE_SORT:
                 return std::make_shared<BubbleSort>(array);
 
+            case AlgorithmType::SELECTION_SORT:
+                return std::make_shared<SelectionSort>(array);
+
             case AlgorithmType::INSERTION_SORT:
                 return std::make_shared<InsertionSort>(array);
-                
-            case AlgorithmType::BOGO_SORT:
-                return std::make_shared<BogoSort>(array);
 
             case AlgorithmType::COUNTING_SORT:
                 return std::make_shared<CountingSort>(array);
 
-            case AlgorithmType::SELECTION_SORT:
-                return std::make_shared<SelectionSort>(array);
-
             case AlgorithmType::MERGE_SORT:
                 return std::make_shared<MergeSort>(array);
-
+                
             case AlgorithmType::QUICK_SORT:
                 return std::make_shared<QuickSort>(array);
+
+            case AlgorithmType::BOGO_SORT:
+                return std::make_shared<BogoSort>(array);
         } 
     }
 }

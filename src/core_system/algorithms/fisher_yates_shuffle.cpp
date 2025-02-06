@@ -1,22 +1,14 @@
 #include "core_system/algorithms/fisher_yates_shuffle.hpp"
+#include "core_system/algorithms/utilities.hpp"
+
+#include <utility>
 
 namespace SortingVisualizer::CoreSystem::Algorithms
 {
-    int FisherYatesShuffle::GenerateRandomNumber(int min, int max)
-    {
-        // Prepare random generator once, so remember the mersenne twister in the static variable once.
-        static std::random_device device;
-        static std::mt19937 engine(device());        
-        
-        // Generate random number from range [min, max].
-        std::uniform_int_distribution distribution(min, max);
-        return distribution(engine);
-    }
-
     void FisherYatesShuffle::Prepare()
     {
         // The fisher yates shuffle starts from the last element, so let the next index to swap with other random index be the last index.
-        this->swap_next = this->array.GetNumberOfVisibleElements() - 1;        
+        this->swap_next = this->array.GetNumberOfVisibleElements() - 1;
     }
 
     void FisherYatesShuffle::Step()

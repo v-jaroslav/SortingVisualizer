@@ -8,10 +8,6 @@
 
 namespace SortingVisualizer::UserInterface
 {
-    // We have these functions here, because raylib doesn't work properly on HighDPI screens.
-    float GetScaledWidth();
-    float GetScaledHeight();
-
     class ControlPanel
     {
     private:

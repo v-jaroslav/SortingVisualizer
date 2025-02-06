@@ -1,5 +1,5 @@
-#ifndef SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_SORTING_ALGORITHM_HPP
-#define SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_SORTING_ALGORITHM_HPP
+#ifndef SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_ALGORITHM_HPP
+#define SORTING_VISUALIZER_CORE_SYSTEM_ALGORITHMS_ALGORITHM_HPP
 
 #include "core_system/array.hpp"
 
@@ -16,8 +16,8 @@ namespace SortingVisualizer::CoreSystem::Algorithms
     public:
         Algorithm(Array& a);
         
-        bool IsDone() const;
         virtual void Step() = 0;
+        bool IsDone() const;
         void Reset();
     };
 }

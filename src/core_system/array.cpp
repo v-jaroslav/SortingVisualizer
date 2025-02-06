@@ -1,5 +1,6 @@
 #include "core_system/array.hpp"
 #include "control_panel.hpp"
+#include "screen.hpp"
 
 namespace SortingVisualizer::CoreSystem
 {
