@@ -33,10 +33,10 @@ namespace SortingVisualizer::CoreSystem::Algorithms
         // Move to the next element.
         ++this->j;
 
-        // If we finished one round of the bubble sort, move onto the next round from the beginning (j=0), and increment the i as we are starting new round.
+        // If we finished one round of the bubble sort, move onto the next round from the beginning (j=0), and increment the i as we are starting the new round.
         // And let the newly sorted element be "in sorted state", as its in correct position now.
         // That newly sorted element is at index ((n - 1) - i), and if j is now at that index, then we are done. 
-        // As that element is sorted for sure, no need to compare it further, in every bubble sort round the greatest unsorted value gets sorted in its proper position.
+        // As that element is sorted for sure, no need to compare it further, in every bubble sort round the greatest "non-sorted" value gets sorted in its proper position.
         if (this->j >= (this->array.GetNumberOfVisibleElements() - 1) - i) 
         {
             this->array[(this->array.GetNumberOfVisibleElements() - 1) - i].SetSorted();
