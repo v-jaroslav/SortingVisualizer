@@ -21,11 +21,11 @@ add_subdirectory(${RaylibDir})
 file(GLOB_RECURSE SRC_FILES ${CMAKE_SOURCE_DIR}/src/*.cpp)
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 
-# Additional user include dirs, for the project target.
+# Additional user include dir, for the project target (without other projects having ability to see it).
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/inc)
 
 
-# Additional third partylibrary include dirs.
+# Additional third party library include dirs.
 target_include_directories(${PROJECT_NAME} PRIVATE ${RaylibDir}/src)
 target_include_directories(${PROJECT_NAME} PRIVATE ${RaylibDir}/src/external)
 target_include_directories(${PROJECT_NAME} PRIVATE ${RayguiDir}/src)

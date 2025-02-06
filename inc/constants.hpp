@@ -21,33 +21,36 @@ namespace SortingVisualizer::Constants
     {
         constexpr float MARGIN_PX         = 10.0f;
         constexpr float PADDING_PX        = 10.0f;
+
+        // These values were taken from raygui.h, but raygui.h doesn't provide any "public" constants for these.
         constexpr float STATUS_BAR_HEIGHT = 24.0f;
         constexpr float BUTTON_SIZE       = 18.0f;
 
-        inline const char* STATUS_TITLE_OPEN   = "Control Panel (Open)";
-        inline const char* STATUS_TITLE_CLOSED = "Control Panel (Closed)";
+        inline const char* STATUS_BAR_TITLE_OPEN   = "Control Panel (Open)";
+        inline const char* STATUS_BAR_TITLE_CLOSED = "Control Panel (Closed)";
 
-        inline const char* MIN_ELEMS_SLIDER          = "10";
-        inline const char* MAX_ELEMS_SLIDER          = "500";
-        inline const char* SLIDER_LABEL = "Number of elements:";
+        inline const char* MIN_ELEMS_SLIDER   = "10";
+        inline const char* MAX_ELEMS_SLIDER   = "500";
+        inline const char* ELEMS_SLIDER_LABEL = "Number of elements:";
         
-        inline const char* SORTING_ALGORITHM_LABEL = "Sorting algorithm: ";
+        inline const char* SORTING_ALGORITHM_LABEL = "Sorting algorithm:";
         inline const char* ALGORITHM_OPTIONS = "Bubble Sort;Selection Sort;Insertion Sort;Counting Sort;Merge Sort;Quick Sort;Bogo Sort";
         
         inline const char* RUN_ALGORITHM_BTN  = "Run Algorithm";
         inline const char* STOP_ALGORITHM_BTN = "Stop Algorithm";
         inline const char* SHUFFLE_ELEMS_BTN  = "Shuffle Elements";
         inline const char* MUTE_AUDIO_BTN     = "Mute Audio";
-        inline const char* PLAY_AUDIO_BTN     = "PLay Audio";
+        inline const char* PLAY_AUDIO_BTN     = "Play Audio";
     }
     
     namespace Audio
     {
         constexpr int MAX_FREQUENCY = 1000;
-        constexpr int AMPLITUDE = 32000;
+        constexpr int AMPLITUDE     = 32000;
+
+        constexpr int SAMPLE_SIZE   = 16;
         constexpr int SAMPLING_RATE = 44100;
-        constexpr int SAMPLE_SIZE = 16;
-        constexpr int BUFFER_SIZE = 4096;
+        constexpr int BUFFER_SIZE   = 4096;
     }
 }
 

@@ -7,6 +7,7 @@
 #include "core_system/array.hpp"
 #include "core_system/algorithms/algorithm.hpp"
 #include "core_system/algorithms/fisher_yates_shuffle.hpp"
+#include "core_system/algorithms/algorithm_factory.hpp"
 
 namespace SortingVisualizer
 {
@@ -16,14 +17,14 @@ namespace SortingVisualizer
         UserInterface::ControlPanel controls;
         CoreSystem::Array array;
         
-        bool run_shuffler = false;
-        CoreSystem::Algorithms::FisherYatesShuffle shuffler;          
+        bool run_shuffler;
+        CoreSystem::Algorithms::FisherYatesShuffle shuffler;
         
-        bool run_sort = false;
+        bool run_sort;
         std::shared_ptr<CoreSystem::Algorithms::Algorithm> sorting_strategy;
         using AlgorithmFactory = CoreSystem::Algorithms::AlgorithmFactory;
         
-        bool play_sound = true;
+        bool play_sound;
 
         void RenderGraphics();
         void HandleUserInput();

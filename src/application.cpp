@@ -1,17 +1,17 @@
 #include "constants.hpp"
 #include "application.hpp"
 
-#include "core_system/algorithms/algorithm_factory.hpp"
 #include "core_system/tone_generator.hpp"
 
+// One translation unit must have a raygui implementation, conditional compilation.
 #define RAYGUI_IMPLEMENTATION
-#include <raylib.h>
 #include <raygui.h>
+#include <raylib.h>
 
 namespace SortingVisualizer
 {
     Application::Application() 
-        : shuffler(array) 
+        : shuffler(array), run_shuffler(false), run_sort(false), play_sound(true)
     {
         SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_HIGHDPI | FLAG_MSAA_4X_HINT);
 
@@ -20,6 +20,8 @@ namespace SortingVisualizer
         SetWindowMinSize(INITIAL_WIDTH, INITIAL_HEIGHT);
         
         this->sorting_strategy = AlgorithmFactory::GetInstance().CreateAlgorithm(controls.GetAlgorithmType(), array);
+
+        CoreSystem::ToneGenerator::Initialize();
     }
 
     void Application::RenderGraphics()
@@ -36,7 +38,7 @@ namespace SortingVisualizer
 
     void Application::HandleUserInput()
     {
-        // The user may update the number of visible elements only if he isn't running any sorting algorithms.
+        // The user may update the number of visible elements only if he isn't running any sorting algorithm.
         if (!this->run_shuffler && !this->run_sort)
             this->array.SetNumberOfVisibleElements(this->controls.GetNumberOfElements());
 
@@ -49,16 +51,15 @@ namespace SortingVisualizer
             this->sorting_strategy = AlgorithmFactory::GetInstance().CreateAlgorithm(controls.GetAlgorithmType(), array);
 
             // We first want to run the shuffler, then the actual sorting strategy.
-            this->run_shuffler = true;    
-            this->run_sort = false;
             this->shuffler.Reset();
+            this->run_shuffler = true;
+            this->run_sort = false;
         }
         
         if (this->controls.WasStopAlgorithmBtnPressed())
         {
             // Stop both the shuffler and sorting strategy.
-            this->run_shuffler = false;
-            this->run_sort = false;
+            this->run_sort = this->run_shuffler = false;
             CoreSystem::ToneGenerator::Stop();
         }
         
@@ -78,6 +79,8 @@ namespace SortingVisualizer
 
     void Application::UpdateLogic()
     {
+        // Reset focus of array elements whenever logic is being updated, and not when we are rendering frames, as algorithms which are ran in the UpdateLogic change the focus of elements exactly here.
+        // We do not do that in RenderGraphics(), as that function may be called multiple times, before UpdateLogic() is, and therefore some elements won't stay focused long enough, and we would have flashing effect.
         this->array.ResetFocus();
 
         if (this->run_shuffler)
@@ -99,15 +102,19 @@ namespace SortingVisualizer
         if (this->run_sort)
         {
             if (this->sorting_strategy->IsDone())
+            {
                 this->run_sort = false;
+                CoreSystem::ToneGenerator::Stop();
+            }
             else
+            {
                 this->sorting_strategy->Step();
+            }
         }        
     }
 
     void Application::run()
     {
-        CoreSystem::ToneGenerator::Initialize();
         float delta_time_accumulator = 0.0f;
 
         while (!WindowShouldClose())
@@ -115,7 +122,7 @@ namespace SortingVisualizer
             RenderGraphics();
             HandleUserInput();
             
-            // Update logic at a fixed rate, (1/DELTA_TIME) times per second, regardless of the frame rate. And also remember that logic update has occured.
+            // Update logic at a fixed rate, (1/DELTA_TIME) times per second, regardless of the frame rate.
             delta_time_accumulator += GetFrameTime();
             while (delta_time_accumulator >= Constants::Application::DELTA_TIME)
             {
