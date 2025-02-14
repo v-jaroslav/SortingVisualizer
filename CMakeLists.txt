@@ -33,6 +33,4 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${RayguiDir}/src)
 # Additional libraries to link. MSVC compiler will look for <library_name>.lib, g++ may look for lib<library_name>.a, etc.
 # We didn't have to specify link directory for raylib as we evaluate CMakeLists.txt of raylib source code, it gets automatically handled.
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
-target_link_libraries(${PROJECT_NAME} PRIVATE opengl32)
-target_link_libraries(${PROJECT_NAME} PRIVATE gdi32)
-target_link_libraries(${PROJECT_NAME} PRIVATE winmm)
+
