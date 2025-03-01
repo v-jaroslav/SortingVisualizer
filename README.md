@@ -6,7 +6,7 @@ You can view the example gif below to see how it works! As you can see the appli
 
 And it allows you to visualize many different algorithms, and most importantly, it allows you to HEAR THE SORTING!
 
-![Example](https://github.com/0xTheVJ/SortingVisualizer/blob/main/example.gif)
+![Example](https://github.com/v-jaroslav/SortingVisualizer/blob/main/example.gif)
 
 ## Running the application
 
@@ -14,7 +14,7 @@ You can do so by downloading one of the latest releases, from this github repo, 
 
 In order to build the project, you need to have cmake tool installed, and a C++ compiler.
 
-To build the project, first you must clone it with `git clone https://github.com/0xTheVJ/SortingVisualizer.git`
+To build the project, first you must clone it with `git clone https://github.com/v-jaroslav/SortingVisualizer`
 
 After that position yourself to the directory SortingVisualizer with `cd SortingVisualizer`
 
