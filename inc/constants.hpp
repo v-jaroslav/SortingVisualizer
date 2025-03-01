@@ -14,7 +14,7 @@ namespace SortingVisualizer::Constants
     {
         constexpr int INITIAL_WIDTH  = 1000;
         constexpr int INITIAL_HEIGHT = 800;
-        inline const char* TITLE     = "SortingVisualizer - By 0xTheVJ";
+        inline const char* TITLE     = "SortingVisualizer - By v-jaroslav";
     } 
     
     namespace UserInterface::ControlPanel
