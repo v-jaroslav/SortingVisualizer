@@ -2,7 +2,7 @@
 
 A small C++ application, that uses Raylib v5.5 and Raygui v4.0 to visualize various sorting algorithms.
 
-You can view a gif below to see how it works! As you can see the application allows you to change the size of the array.
+You can view a gif below (wait for it to load) to see how it works! As you can see the application allows you to change the size of the array.
 
 And it allows you to visualize many different algorithms, and most importantly, it allows you to **hear the sorting**!
 
